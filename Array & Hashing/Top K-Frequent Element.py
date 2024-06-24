@@ -13,3 +13,8 @@ DO NOT USE SORTED, USE BUCKET SORT
 
 
 '''
+
+arr = [1,3,5,7]
+
+for i in range(len(arr)):
+    print(i)
