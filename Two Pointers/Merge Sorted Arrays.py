@@ -6,5 +6,4 @@
     else if nth index in nums2 is less than or equal to mth index in nums1, make the last index in nums1 equal to nth index in nums2
     (If m is already exhausted (i.e., m < 0), it will still copy elements from nums2 to nums1.)
         decrement n and last 
-
 '''
