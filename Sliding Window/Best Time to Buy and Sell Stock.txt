@@ -1,0 +1,16 @@
+
+1. Default profit to 0 and lowest stock to the first val in prices
+2. Loop through each value in prices
+    if curr is less than lowest, then lowest = curr
+    if the curr stock - lowest is greater profit than profit, profit = curr - lowest
+3. return profit
+
+        profit = 0
+        low = prices[0]
+
+        for x in prices:
+            if x < low:
+                low = x
+            if (x - low) > profit:
+                profit = x - low
+        return profit

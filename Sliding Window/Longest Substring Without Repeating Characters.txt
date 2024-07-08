@@ -1,0 +1,6 @@
+1. Initialize two pointers left and right at 0, and the longest substring length at 0, and an empty set
+2. While loop through the whole array with left,
+    if the element is in the set, then increment the left pointer and remove the char at left index from the set
+    else, add the element to the set and increment right
+    longest = max(longest, right - left)
+3. return longest
