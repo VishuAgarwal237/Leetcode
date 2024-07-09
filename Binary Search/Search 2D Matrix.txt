@@ -1,0 +1,37 @@
+Run binary search on rows to get row where the value can lie in, and then run another binary search in that row to find value
+
+1. 
+
+
+
+
+
+
+    ROWS, COLS = len(matrix), len(matrix[0])
+
+        top, bot = 0, ROWS - 1
+        while top <= bot:
+            row = (top+bot)//2
+            if target > matrix[row][-1]:
+                top = row + 1
+            elif target < matrix[row][0]:
+                bot = row - 1
+            else: 
+                break
+        
+        if not (top <= bot):
+            return False
+        else:
+            row = (top + bot)//2
+            low = 0
+            high = len(matrix[row]) - 1
+            
+            while low <= high:
+                middle = (low + high) // 2
+                if matrix[row][middle] > target:
+                    high = middle - 1
+                elif matrix[row][middle] < target:
+                    low = middle + 1
+                else:
+                    return True
+            return False

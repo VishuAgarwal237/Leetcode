@@ -1,0 +1,27 @@
+Create helper function to determine if a certain number is happy, then while loop on n
+
+1. Helper Funct: Initialize happy = 0, and then loop x > 0 and increment happy by the square of x%10, return happy outside loop
+2. Create a set to keep track of what has been seen
+3. while n != 1 and has not been seen yet (because if the number has been seen, the following iterations would result in the same ones previously, so it is not a happy number), 
+add n to the seen set and then re-assign n to its happy val by doing n = getH(n)
+    
+4. return n == 1 outside the loop
+
+
+
+
+
+
+
+
+        def getH(x):
+            happy = 0
+            while x > 0:
+                happy = happy + (x % 10)**2
+                x = x // 10
+            return happy 
+        seen = set()
+        while n != 1 and n not in seen:
+            seen.add(n)
+            n = getH(n)
+        return n == 1

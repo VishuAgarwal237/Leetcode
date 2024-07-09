@@ -1,0 +1,31 @@
+1. Loop from the back via indices
+2. If digits[i] ends with 9, then replace with 0
+3. Else add one to the last one and return digits
+4. Outside of the loop, prepend [1] and return digits because that means the loop is over and everything was a 9
+
+Ex: 1909
+       ^
+    1900
+      ^
+    1910 <-return
+
+Ex: 9999
+       ^
+    9990
+      ^
+    9900
+     ^
+    9000
+    ^
+    0000
+   ^
+   1000 <-return 
+
+
+        for i in range(len(digits)-1,-1,-1):
+            if digits[i] == 9:
+                digits[i] = 0
+            else:
+                digits[i] = digits[i] + 1
+                return digits
+        return [1] + digits

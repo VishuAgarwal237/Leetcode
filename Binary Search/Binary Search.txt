@@ -1,0 +1,9 @@
+Use two pointers, high and low
+
+1. Intiialize 2 pointers, low = 0 and high at len(nums) - 1
+2. while left <= right, 
+    Initialize a mid pointer at (low + high) // 2
+    if value at middle is more than target, then move high to be mid-1
+    elif value at middle is less than target, then move low to be mid+1
+    else return middle cuz we found the index
+3. Return -1 outside cuz that means the target does not exist 
