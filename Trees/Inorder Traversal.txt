@@ -1,0 +1,18 @@
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        
+        ret = []
+        def inorder(node):
+            if not node:
+                return
+            inorder(node.left)
+            ret.append(node.val)
+            inorder(node.right)
+        inorder(root)
+        return ret
+
+
+1. Make blank array to return
+2. Create a new function 
+    essentially keep going left until not possible, add that val to arr, and then go right as much as possible
+    the call stacks will pop off from the botton-up and then we can
