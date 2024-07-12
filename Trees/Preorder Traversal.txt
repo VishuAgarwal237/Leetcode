@@ -1,0 +1,25 @@
+Similar to inorder but we use a different order to add the values to the array
+1. we add the values as we go from the root and down, and we go left and then right
+
+
+
+       1
+     /   \
+    2     3
+   / \   / \
+  4   5 6   7
+
+  = [1, 2, 4, 5, 3, 6, 7]
+
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        
+        ret = []
+
+        def preorder(node):
+            if not node:
+                return
+            ret.append(node.val)
+            preorder(node.left)
+            preorder(node.right)
+        preorder(root)
+        return ret

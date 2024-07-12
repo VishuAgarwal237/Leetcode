@@ -11,8 +11,8 @@ class Solution:
         inorder(root)
         return ret
 
-
+The values are in order from left to right of the tree
 1. Make blank array to return
 2. Create a new function 
-    essentially keep going left until not possible, add that val to arr, and then go right as much as possible
-    the call stacks will pop off from the botton-up and then we can
+    essentially keep going left until not possible, add that val to arr, and then backtrack and go right
+    the call stacks will pop off from the botton-up and then we can cover the whole tree

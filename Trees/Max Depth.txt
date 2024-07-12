@@ -1,0 +1,11 @@
+1. Check if the root exists or not, if not then 0
+2. recursively go through both subtrees and get their depths by adding 1 each time, and then adding 1 for the root
+
+
+
+
+def maxDepth(self, root: Optional[TreeNode]) -> int:
+        
+        if not root: 
+            return 0
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))

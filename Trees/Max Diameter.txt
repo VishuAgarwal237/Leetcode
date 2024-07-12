@@ -1,0 +1,30 @@
+Use bottom-up approach and get diamater of every node 
+
+1. max diam var
+2. Create fs function
+3. if node null, then return -1 to negative the edge we assumed existed
+4. recursively find height of left subtree and right subtree
+5. calculate the curr diam by adding the two left and right diams and 2 because takes 1 edge each to reach left and right subtree
+6. update max diam to be max of current and prev max diam
+7.  return 1 + max(left,right) because it's height of the current node's subtree
+8. call the dfs funct on root and then return max diam
+
+
+
+
+
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+
+        maxDiam = 0
+
+        def dfs(node):
+            nonlocal maxDiam
+            if not node:   #null tree
+                return -1 #negate the +1
+            left = dfs(node.left) # find height of left subtree
+            right = dfs(node.right) # find height of right subtree
+            currDiam = left + right + 2 
+            maxDiam = max(currDiam, maxDiam)
+            return 1 + max(left,right)
+        dfs(root)
+        return maxDiam

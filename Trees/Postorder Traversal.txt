@@ -1,0 +1,31 @@
+DFS again but different order
+1. go left and then right, and then append the values to the array
+
+
+
+
+
+
+       1
+     /   \
+    2     3
+   / \   / \
+  4   5 6   7
+
+   = [4,5,2,6,7,3,1]
+
+
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        
+        ret = []
+
+        def postorder(node):
+            if not node:
+                return
+            postorder(node.left)
+            postorder(node.right)
+            ret.append(node.val)
+        postorder(root)
+        return ret
+
+    
