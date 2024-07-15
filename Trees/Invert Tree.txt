@@ -1,0 +1,23 @@
+Swap the two nodes at each level
+
+1. Create helper funct dfs
+2. if null node, then return
+3. swap the left and right nodes (this will also carry over their subtrees when switching)
+4. recursively call this on node.left and node.right to switch their children as well
+5. Call dfs on the root outside the funct
+6. return root (it remains unchanged)
+
+
+
+
+
+def invertTree(root):
+
+    def dfs(node):
+        if not node:
+            return
+        node.left, node.right = node.right, node.left  #swap the two, also carries the subtrees with them
+        dfs(node.left)
+        dfs(node.right)
+    dfs(root)
+    return root #remains unchanged
