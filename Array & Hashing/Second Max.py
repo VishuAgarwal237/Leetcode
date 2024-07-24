@@ -14,3 +14,4 @@ def SecondMax(nums):
 
 if __name__ == "__main__":
     SecondMax([5,3,2,4,6,2,9,9])
+

@@ -1,0 +1,27 @@
+Similar to a BST Search, except need to stop when first instance of in range of p and q 
+
+1. DFS through tree
+2. Base case
+3. if the node.val falls between p and q, return node
+4. If it is less than both p and q, then dfs right to get back on track
+5. If it is more than both p and q, then dfs left to get back on track
+6. return dfs(root)
+
+
+
+
+
+
+def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        
+        def dfs(node):
+            if not node:
+                return 
+            if p.val <= node.val <= q.val or q.val <= node.val <= p.val:
+                return node
+            elif node.val < p.val and node.val < q.val:
+                return dfs(node.right)
+            elif node.val > q.val and node.val > p.val:
+                return dfs(node.left)
+        return dfs(root)
+         

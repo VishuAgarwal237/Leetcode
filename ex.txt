@@ -52,3 +52,20 @@ def test(nums):
     
 if __name__ == "__main__":
     test([5,3,2,4])
+
+
+
+
+
+defSecondMax(nums):
+    max = nums[0]
+    secondmax = float('-inf')
+    
+    for x in nums:
+        if x > max:
+            secondmax = max
+            max = x
+        elif x > secondmax:
+            secondmax = x
+    return secondmax
+

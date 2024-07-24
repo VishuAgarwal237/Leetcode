@@ -1,0 +1,28 @@
+Create two arrays that have the leafs of the two trees and then compare them
+
+1. Create two arrays
+2. DFS through node and pass in array to populate
+3. Base case
+4. if leaf, then append the node.val
+5. dfs left and then right
+6. Outside the function, dfs on root1 and arr1, and then on root2 and arr2, and then compare the arrays
+
+
+
+
+
+    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+
+        arr1 = []
+        arr2 = []
+
+        def dfs(node, arr):
+            if not node:
+                return
+            if not node.left and not node.right:
+                arr.append(node.val)
+            dfs(node.left, arr)
+            dfs(node.right, arr)
+        dfs(root1, arr1)
+        dfs(root2, arr2)
+        return arr1 == arr2

@@ -1,0 +1,26 @@
+Use code to determine if a tree is the same as another, and then use that check for every code in the given tree
+1. DFS through the tree
+2. Base case false if no node
+3. if the node matches the subroot using the helper funct, then return True
+4. We dfs left OR right because if a matching subtree is found in either subtree, then we can return True
+
+
+
+
+
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        
+        def sub(p, q):
+            if (not p and q) or (p and not q):
+                return False
+            if not p and not q:
+                return True
+            return p.val == q.val and sub(p.left, q.left) and sub(p.right, q.right)
+
+        def dfs(node):
+            if not node:
+                return False
+            if sub(node, subRoot):
+                return True    
+            return dfs(node.left) or dfs(node.right)
+        return dfs(root)

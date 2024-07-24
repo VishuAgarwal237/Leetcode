@@ -1,0 +1,24 @@
+
+1. DFS through the trees
+2. If one of the trees do not exist, then return the other
+3. Create a node that is the sum of node1 and node2
+4. node.left = recurse left of node1 and node2
+5. node.right = recurse right of node1 and node2
+6. return node 
+7. Call dfs on root1 and root2 outside the dfs helper function
+
+
+
+
+
+def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+
+    def dfs(node1, node2):
+        if not node1: return node2
+        if not node2: return node1
+        node = TreeNode(node1.val + node2.val)
+        node.left = dfs(node1.left, node2.left)
+        node.right = dfs(node1.right, node2.right)
+        return node
+
+    return dfs(root1,root2)

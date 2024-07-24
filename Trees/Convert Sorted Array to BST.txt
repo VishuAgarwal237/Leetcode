@@ -1,0 +1,23 @@
+Keep getting the middle value of array, and then the left node is the middle of the array to the left, and the right node is the middle of the array to the right
+
+1. Base case
+2. Get middle value of nums
+3. Create node with middle
+4. left = recursive call to left side of array 
+5. right = recursive call to right side of array 
+6. return root
+
+
+
+
+
+
+def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        
+        if not nums:
+            return None
+        middle = len(nums)//2
+        root = TreeNode(nums[middle])
+        root.left = self.sortedArrayToBST(nums[:middle])
+        root.right = self.sortedArrayToBST(nums[middle+1:])
+        return root

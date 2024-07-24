@@ -1,0 +1,31 @@
+DFS through tree and keep track of max path, and check if current node is greater than current path max, if so, then add 1 to count
+
+1. Initialize a new count var
+2. DFS through tree
+3. Make base case
+4. if current node value is greater than current path max, then increment count
+5. re-assign pathMax to the be the max of pathMax and the current node value
+6. dfs to the left and right, pass in pathMax too
+7. call dfs on root and root.val
+8. return count
+
+
+
+ 
+
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        
+        goodPaths = 0
+        def dfs(node, pathMax):
+            nonlocal goodPaths
+            if not node:
+                return 
+            if node.val >= pathMax:
+                goodPaths = goodPaths + 1
+            pathMax = max(pathMax, node.val)
+            dfs(node.left, pathMax)
+            dfs(node.right, pathMax)
+
+        dfs(root, root.val)
+        return goodPaths

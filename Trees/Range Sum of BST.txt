@@ -1,0 +1,31 @@
+DFS through BST and check the value for within range, if greater, then go left, else right
+
+1. Initialize a sum variable
+2. DFS function to go through tree
+3. Base case if not node then return 0
+4. if node falls within the range, then add the node val to the running sum, and dfs left and right because either side might still be in the range
+5. elif node val is greater than high, then dfs left to get back closer to the range
+6. elif node val is less than hlowigh, then dfs right to get back closer to the range
+7. dfs on root, and then return sum
+
+
+
+
+def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        
+        sum = 0
+        def dfs(node):
+            nonlocal sum
+            if not node:
+                return 0
+            if high >= node.val >= low:
+                sum = sum + node.val
+                dfs(node.left)
+                dfs(node.right) 
+            elif node.val > high:
+                dfs(node.left)
+            elif node.val < low:
+                dfs(node.right) 
+
+        dfs(root)
+        return sum
