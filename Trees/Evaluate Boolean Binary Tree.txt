@@ -1,0 +1,24 @@
+
+1. DFS through the tree
+2. if leaf, then return true if val is 1, else false
+3. if node.val is a 2, then return dfs both left OR right to get their decision; we use return because we need their result
+4. if node.val is a 3, then return dfs both left AND right to get their decision
+5. return dfs on the root
+
+
+
+
+
+
+
+class Solution:
+    def evaluateTree(self, root: Optional[TreeNode]) -> bool:
+        
+        def dfs(node):
+            if not node.left and not node.right:    #if leaf
+                return node.val == 1    #if 1, then true, else false
+            if node.val == 2:
+                return dfs(node.left) or dfs(node.right)
+            if node.val == 3:
+                return dfs(node.left) and dfs(node.right)
+        return dfs(root)
