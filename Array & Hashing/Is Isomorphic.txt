@@ -1,0 +1,25 @@
+Check if the mappings of letters from s to t and then t to s is the same (bidirectional)
+1. Create new dicts ds and dt
+2. Loop through the word
+3. if the current letter in t is in dt but its mapping to s is different than s[i], 
+    or if the current letter in s is in ds but its mapping to t is different than t[i], return False
+4. add the current t[i]:s[i] to dt and s[i]:t[i] to ds
+5. return True outside loop as base case
+
+
+
+
+
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        ds = {}
+        dt = {}
+
+        for i in range(len(t)):
+            if (t[i] in dt and dt[t[i]] != s[i]) or (s[i] in ds and ds[s[i]] != t[i]):
+                return False
+            else:
+                dt.update({t[i]:s[i]})
+                ds.update({s[i]:t[i]})
+        return True

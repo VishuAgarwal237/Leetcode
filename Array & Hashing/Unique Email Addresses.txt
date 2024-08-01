@@ -1,0 +1,26 @@
+Loop through the emails and split it into local and domain, and then do the checks for "." and "+" and then append the new local and @domain to a set
+
+1. Create an empty set to check what we have seen
+2. Loop through emails
+3. Split into local and domain vars using email.split("@", 1)[0] and email.split("@", 1)[1]
+4. Replace "." in local with "" 
+5. If "+" in local, split it at that index and get the first part only
+6. Add this new local with @domain to the set
+7. return the length of the set outside the loop
+
+
+
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        
+        s = set()
+        for email in emails:
+            local = (email.split("@", 1))[0]
+            domain = (email.split("@", 1))[1]
+            if "." in local:
+                local = local.replace('.', '')
+            if "+" in local:
+                local = local.split("+", 1)[0]
+            s.add(local + "@" + domain)
+       
+        return len(s)

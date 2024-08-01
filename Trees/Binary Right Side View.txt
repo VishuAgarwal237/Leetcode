@@ -1,0 +1,26 @@
+Dfs through tree and then append what you have seen to an array, and then if the length of the array matches the level you are on, it means this is a new right side node
+
+1. Create new arr to return
+2. DFS funct
+3. base case
+4. if the length of the array matches the current node's level, append the node to the arr
+5. dfs right first bc we want right most, add 1 to the level param
+6. now dfs left
+7. call dfs on the root with level 0, and then return the arr
+
+
+
+
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        
+        arr = []
+        def dfs(node, level):
+            if not node:
+                return
+            if level == len(arr):
+                arr.append(node.val)
+            dfs(node.right, level + 1)
+            dfs(node.left, level + 1)
+            
+        dfs(root,0)
+        return arr

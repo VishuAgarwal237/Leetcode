@@ -1,0 +1,30 @@
+Inorder traversal through the array to get an ordered view of the nodes and compute differences as we go
+
+1. Create new vars minDis and prev to track the current minDis and also the previous node
+2. DFS funct
+3. base case
+4. DFS left
+5. if prev isn't None, then minDis is equal to the min of the current minDis or node.val - prev.val
+6. now prev = current node 
+7. dfs right
+8. call dfs on the root and then return minDis
+
+
+
+def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+        
+        minDis = float('inf')
+        prev = None
+
+        def dfs(node):
+            nonlocal minDis, prev
+            if not node:
+                return                
+            dfs(node.left)
+            if prev is not None:
+                minDis = min(minDis, node.val - prev.val)
+            prev = node
+            dfs(node.right)
+        
+        dfs(root)
+        return minDis

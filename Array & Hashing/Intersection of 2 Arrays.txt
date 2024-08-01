@@ -1,0 +1,22 @@
+1. Create a set of nums1
+2. Create an empty arr to return
+3. Loop through nums2
+4. if the value is in the set, then add that value to the returning array, 
+    and also remove it from the set so that we don't re-append that same value again if we come across it again in nums2
+5. return the arr outside the loop
+
+
+
+
+
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        
+        n1 = set(nums1)
+        res = []
+
+        for x in nums2:
+            if x in n1:
+                res.append(x)
+                n1.remove(x)
+        return res

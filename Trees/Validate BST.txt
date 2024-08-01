@@ -1,0 +1,26 @@
+DFS through and if the node is between the low and high values, then continue to check left and right
+
+1. DFS funct
+2. base case
+3. if the node.val is between the low and high params, then call dfs on node.left with the same low but the node.val being the new high
+    and also call it on the right node with the node.val being the new low but use the same high
+    (we use the AND keyword because we want both sides to be true, not just one)
+4. else, return false bc one side of the conditionals mustve been false
+5. call dfs on the root and negative inf and positive inf for default values
+
+
+
+
+
+
+def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        
+        def dfs(node, low, high):
+            if not node:
+                return True
+            if low < node.val < high:
+                return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)
+            else:
+                return False
+        
+        return dfs(root, float('-inf'), float('inf'))
