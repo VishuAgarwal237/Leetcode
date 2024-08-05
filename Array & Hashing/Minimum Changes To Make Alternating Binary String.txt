@@ -1,0 +1,34 @@
+Get the number of the changes for making it 0,1,.. or 1,0,.. and return the min
+
+1. changes1 and changes2 vars
+2. Check the 0,1, case first
+    Loop through the string, and if its an even index and the value at that index is not equal to a 0, then increment changes1
+    if its an odd index and the value at that index is not equal to a 1, then increment changes1
+3. Check the 1,0, case now
+    Do similar process as step 2 but flip the checks
+4. return min(changes1, changes2)
+
+
+
+class Solution:
+    def minOperations(self, s: str) -> int:
+        
+        changes1 = 0
+        changes2 = 0
+        for i in range(len(s)):
+            if i%2 == 0:
+                if s[i] != "0":
+                    changes1 = changes1 + 1
+            if i%2 == 1:
+                if s[i] != "1":
+                    changes1 = changes1 + 1
+        
+
+        for i in range(len(s)):
+            if i%2 == 0:
+                if s[i] != "1":
+                    changes2 = changes2 + 1
+            if i%2 == 1:
+                if s[i] != "0":
+                    changes2 = changes2 + 1
+        return min(changes1, changes2)

@@ -1,0 +1,27 @@
+1. Split the path at all "/"s
+2. remove all the empty strings
+3. create a new array to join to return 
+4. Loop through arr, and append each values
+    if the value is '..', pop that off, and then pop off one more as mentioned in the description
+    if the value is '.;, just pop off once to exclude it as mentioned in the description
+5. return "/" + "/".join(res)
+
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        
+        arr = path.split('/')
+        arr = [s for s in arr if s != ""]
+        res = []
+        for i in range(len(arr)):
+            res.append(arr[i])
+            if arr[i] == '..':
+                if res:
+                    res.pop()
+                if res:
+                    res.pop()
+            if arr[i] == '.':
+                if res:
+                    res.pop()
+        return "/" + "/".join(res)
+            

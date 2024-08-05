@@ -1,0 +1,23 @@
+1. Initialize empty var max_score
+2. Create empty dict for left with two empty entries for '0' and '1'
+3. Create dict for right with two entries for '0':s.count('0') and '1':s.count('1')
+4. Loop through s except the last letter,
+    add the count of the curr letter to dl and subtract it from dr (running dicts)
+    update max_score to be the max of itself and dl['0'] + dr['1']
+5. return max_score
+
+
+
+class Solution:
+    def maxScore(self, s: str) -> int:
+        
+        max_score = 0
+        dl = {'0':0, '1':0}
+        dr = {'0': s.count('0'), '1': s.count('1')}
+
+        for x in range(len(s)-1):
+
+            dl[s[x]] = dl[s[x]] + 1
+            dr[s[x]] = dr[s[x]] - 1
+            max_score = max(max_score, dl['0'] + dr['1'])
+        return max_score

@@ -1,0 +1,24 @@
+Create a dict of chars to the indices they appear in, and then find the largest difference between the values in every array
+
+1. Create a dict of chars to the indices they appear in
+2. Initialize new var longest to negative inf
+3. Loop through the values of the dict, and then longest = max of longest and the max - min - 1 (gets the size of the substring in between the chars) of the current array
+4. return longest
+
+
+
+
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+
+        d = {}
+        for i in range(len(s)):
+            if s[i] not in d:
+                d.update({s[i]:[i]})
+            else:
+                d[s[i]].append(i)
+
+        longest = float('-inf')
+        for indices in d.values():
+            longest = max(longest, max(indices) - min(indices) - 1)
+        return longest

@@ -1,0 +1,19 @@
+1. curr_min at first price and set profit to 0
+2. Loop through prices
+    if prices[i] is less than the curr_min, curr_min = prices[i]
+    elif prices[i] is greater than curr_min, sell right there so add the profit to profit, and then set curr_min to prices[i] again as default
+3. return prices
+
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        
+        curr_min = prices[0]
+        profit = 0
+        for i in range(len(prices)):
+            if prices[i] < curr_min:
+                curr_min = prices[i]
+            elif prices[i] > curr_min:
+                profit = profit + (prices[i] - curr_min)
+                curr_min = prices[i]
+        return profit

@@ -1,0 +1,24 @@
+1. Create two empty lists to return
+2. Create set versions of the nums arrays
+3. Loop through nums1, and if the value is not in set(nums2), then append it to the array to return for nums1
+4. Loop through nums2, and if the value is not in set(nums1), then append it to the array to return for nums2
+5. return [list(set(n1)), list(set(n2))] to get rid of any duplicate values in the arrays
+
+
+
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        
+        n1 = []
+        s2 = set(nums2)
+        n2 = []
+        s1 = set(nums1)
+
+        for x in nums1:
+            if x not in s2:
+                n1.append(x)
+        for x in nums2:
+            if x not in s1:
+                n2.append(x)
+        
+        return [list(set(n1)), list(set(n2))]

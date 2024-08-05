@@ -1,0 +1,35 @@
+DFS through the tree and add ->int or just the int if not temp, and then add the temp string to the arr if we are at a leaf, then dfs left and right
+
+1. Create empty array
+2. DFS function
+3. Base case returns []
+4. if temp, then add "->" and node.val
+5. else if not temp, then temp = node.val
+6. if leaf, then add the temp string to the arr because we found one binaryTreePaths
+7. dfs left and then right
+8. call dfs on the root with empty string outside the helper function
+9. return arr
+
+
+
+
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        
+        arr = []
+        def dfs(node, temp):
+            if not node:
+                return []
+            if temp:
+                temp += "->" + str(node.val)
+            else:
+                temp = str(node.val)
+            if not node.left and not node.right:
+                arr.append(temp)
+                return
+
+            dfs(node.left, temp)
+            dfs(node.right, temp)
+
+        dfs(root, "")
+        return arr

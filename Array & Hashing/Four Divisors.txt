@@ -1,0 +1,24 @@
+Loop through nums and find each values divisors, and then the total number is 4, then increment count by the sum of the 4 divisors
+
+1. Intitialize empty var count
+2. Loop through nums, and create a temp set with 1 and x already in it to keep track of divisors
+3. Loop through the range of 2 and the sqrt root of int 
+4. if the num % divisor == 0, add the divisor and num/divisor to temp
+5. after the inner loop, check if temp == 4, and if so, then increment the sum of temp to count
+6. return count outside all loops
+
+
+
+class Solution:
+    def sumFourDivisors(self, nums: List[int]) -> int:
+        
+        count = 0
+        for x in nums:
+            temp = {1,x}
+            for i in range(2, int(math.sqrt(x)+1)):
+                if x % i == 0:
+                    temp.add(i)
+                    temp.add(x/i)
+            if len(temp) == 4:
+                count = count + sum(temp)
+        return int(count)

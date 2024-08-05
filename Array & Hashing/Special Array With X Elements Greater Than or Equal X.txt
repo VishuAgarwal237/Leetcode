@@ -1,0 +1,22 @@
+1. Loop through the length of the array (x)
+    Initialize empty counter var to count how many numbers are greater than x
+    Loop through the values of the array itself (y), 
+        if the y >= x, then increment counter
+    if counter == x at the end of the inner loop, then return x
+2. return -1 outside, meaning we found no such special x values
+
+
+
+
+
+class Solution:
+    def specialArray(self, nums: List[int]) -> int:
+        
+        for x in range(1,len(nums)+1):
+            counter = 0
+            for y in nums:
+                if y >= x:
+                    counter = counter + 1
+            if counter == x:
+                return x
+        return -1
