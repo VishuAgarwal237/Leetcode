@@ -1,0 +1,28 @@
+Use a funct to get the height, and then a dfs funct to check the height of the left and right subtrees, and should max differ by 1
+1. Write getHeight function
+2. dfs through the tree
+3. Base case true if no node
+4. if abs(getHeight(node.left) - getHeight(node.right)) > 1: return False
+5. return dfs(node.left) and dfs(node.right) because if either subtree is not balanced, it will return False
+
+
+
+
+
+
+def isBalanced(self, root: Optional[TreeNode]) -> bool:
+       
+        def getHeight(node):
+            if not node:
+                return 0
+            return 1 + max(getHeight(node.left), getHeight(node.right))
+        
+        def dfs(node):
+            if not node:
+                return True
+            if abs(getHeight(node.left) - getHeight(node.right)) > 1:
+                return False
+            return dfs(node.left) and dfs(node.right)
+        
+        return dfs(root)
+

@@ -1,0 +1,33 @@
+1. Create a dictionary of integers to roman numerals including the weird ones like 4,940,90,400,900 
+2. initialize empty string to return
+3. loop through the keys of the dict in reverse (largest to smallest)
+4. if num = 0, break
+    else, use divmod to get num // value and num % value, and num is now equal to the remainder
+    add the value we divided by to the returning string the (num // value) of times
+5. return res
+
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        hmap = {
+      1:    'I',
+      4:    'IV',
+      5:    'V',
+      9:    'IX',
+     10:    'X',
+     40:    'XL',
+     50:    'L',
+     90:    'XC',
+    100:    'C',
+    400:    'CD',
+    500:    'D',
+    900:    'CM',
+   1000:    'M'
+        }
+        res = ''
+        for value in sorted(hmap.keys(), reverse=True):
+            if num == 0:
+                break
+            count, num = divmod(num, value)
+            res += hmap[value] * count
+
+        return res

@@ -1,0 +1,35 @@
+Check all rows and then check all columns and then check each box by looping through +0,+1,+2 combo of the prefixed top left indices
+
+
+
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        
+        
+        for row in range(len(board)):
+            row_seen = set()
+            for col in range(len(board[0])):
+                if board[row][col] != "." and board[row][col] not in row_seen:
+                    row_seen.add(board[row][col])
+                elif board[row][col] != "." and board[row][col] in row_seen:
+                    return False
+        
+        for col in range(len(board[0])):
+            col_seen = set()
+            for row in range(len(board)):
+                if board[row][col] != "." and board[row][col] not in col_seen:
+                    col_seen.add(board[row][col])
+                elif board[row][col] != "." and board[row][col] in col_seen:
+                    return False
+        
+        cent = [(0,0), (0,3), (0,6), (3,0), (3,3), (3,6), (6,0), (6,3), (6,6)]
+        for row, col in cent:
+            box_seen = set()
+            for i in range(0,3):
+                for j in range(0,3):
+                    if board[row+i][col+j] != ".":
+                        if board[row+i][col+j] in box_seen:
+                            return False
+                        box_seen.add(board[row+i][col+j])
+        return True
