@@ -1,0 +1,23 @@
+1. Set current max at last element in array
+2. Loop back to front in array
+3. Set a temp var to be the currMax
+4. re-compute curr_max to be max of itself and the curr number we are on
+5. Make current value temp because we are setting it to the largest element on tis right exclusive (not including itself)
+6. make last element -1 in arr
+7. return arr
+
+
+
+
+
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        
+        currMax = arr[-1]
+        for i in range(len(arr)-1,-1,-1):
+            temp = currMax
+            currMax = max(currMax, arr[i])
+            arr[i] = temp
+            
+        arr[-1] = -1
+        return arr

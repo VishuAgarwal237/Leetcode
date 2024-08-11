@@ -1,0 +1,22 @@
+Two pointer approach to loop througb both strings and increment pointers whenever the chars are the same
+
+1. Initialize two pointers at 0
+2. Loop through len(s) and len(t) to make sure we don't go out of bounds on either
+3. if the chars are the same, then increment the s index
+4. Always index the t index
+5. return i == len(s) outside the loop because if we reached the end of s, then we reached the end of the subsequence we were checking
+
+
+
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        
+        i = 0
+        j = 0
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i = i + 1
+            j = j + 1
+        return i == len(s)
+            

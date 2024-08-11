@@ -1,0 +1,17 @@
+1. Loop through the chars of the first element in the outer loop
+2. loop through the rest of the elements 
+    if they all have the char too, then add that char to temp
+    else, return temp because we found the breaking point at where the prefixes start to differ
+
+
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+ 
+        temp = ""
+        for i in range(len(strs[0])):
+            for y in strs:
+                if i == len(y) or strs[0][i] != y[i]:
+                    return temp
+            temp = temp + strs[0][i]
+        return temp

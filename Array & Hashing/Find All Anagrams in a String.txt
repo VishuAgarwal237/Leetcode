@@ -1,0 +1,31 @@
+Use a running dict and compare it to Counter(p) and if equal, append left pointer to returning array, then increment pointers and remove old left char and add new right char
+
+1. Initialize empty indices array to be returned
+2. Create a counter of the subsequence we are checking for
+3. Initialize empty dict we will compare with the current frequencies of the first len(p) chars in s
+4. Initialize left var
+5. Loop through s from len(p) to len(s):
+6. add the new right char to the dict
+7. remove the old left char from the dict and increment left pointer
+8. check if current dict is equal to dict of p, and if so, then append left to indices
+9. return indices
+
+
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        
+        indices = []
+        anagram = Counter(p)
+        d = Counter(s[0:len(p)])
+        if d == anagram: indices.append(0)
+        left = 0
+        for right in range(len(p), len(s)):
+            if s[right] not in d:
+                d[s[right]] = 1
+            else:
+                d[s[right]] += 1
+            d[s[left]] -= 1
+            left = left + 1
+            if d == anagram:
+                indices.append(left)
+        return indices

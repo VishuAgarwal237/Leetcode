@@ -1,0 +1,24 @@
+Get all the edges and then get the most common edge and subtract that from the length each row has to get the minimum bricks broken
+1. Initialize empty dict to track frequency of edges
+2. Loop through each wall and then initialize empty count to get the edges
+3. Loop through each value in the row except for the last value becaause thats a common edge among all the rows
+4. increment count by the value and add it to the dict
+5. return len(wall) - most common value in the dict
+
+
+
+
+class Solution:
+    def leastBricks(self, wall: List[List[int]]) -> int:
+        
+        edges = {}
+
+        for row in wall:
+            count = 0
+            for x in row[:-1]:
+                count = count + x
+                if count not in edges:
+                    edges[count] = 1
+                else:
+                    edges[count] += 1
+        return len(wall) - max(edges.values(), default=0)

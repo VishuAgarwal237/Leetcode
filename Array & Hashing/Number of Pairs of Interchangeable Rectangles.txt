@@ -1,0 +1,24 @@
+Loop from the back and add the current amount of times we have seen that ratio to the count variable
+
+1. Initialize empty seen dict and count variable
+2. Loop through rectangles reversed
+3. if the ratio is in seen, then increment count by its value (freq of times we have seen it so far), and then increment its value in the dict by 1 to increase its freq by 1 too
+4. if not, then add it with value of 1
+5. return count outside the loop
+
+
+
+class Solution:
+    def interchangeableRectangles(self, rectangles: List[List[int]]) -> int:
+        
+        seen = {}
+        count = 0
+        for rec in reversed(rectangles):
+            if (rec[0]/rec[1]) in seen:
+                count = count + seen[rec[0]/rec[1]]
+                seen[rec[0]/rec[1]] += 1
+            else:
+                seen[rec[0]/rec[1]] = 1                
+        return count
+
+            
