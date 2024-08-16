@@ -1,0 +1,24 @@
+Sliding Window technique to check if current dict is equal to Counter(p)
+
+
+
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        
+        res = []
+        anagram = Counter(p)
+        d = Counter(s[0:len(p)])
+        left = 0
+        if anagram == d: res.append(0)
+
+        for right in range(len(p), len(s)):
+            if s[right] in d:
+                d[s[right]] += 1
+            else: 
+                d[s[right]] = 1
+            d[s[left]] -= 1
+            left = left + 1
+            if d == anagram: 
+                res.append(left)
+        return res
+        

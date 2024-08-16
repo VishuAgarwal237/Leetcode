@@ -1,0 +1,20 @@
+Even indices must be lesser and odds must be greater
+
+1. Loop through nums
+2. if even index, and if greater than right neighbor, then swap
+3. if odd index, and if less than right neighbor, then swap
+
+
+
+def wiggleSort(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        
+        for i in range(len(nums)-1):
+            if i % 2 == 0:
+                if nums[i] > nums[i+1]:
+                    nums[i], nums[i+1] = nums[i+1], nums[i]
+            if i % 2 == 1:
+                if nums[i] < nums[i+1]:
+                    nums[i], nums[i+1] = nums[i+1], nums[i]

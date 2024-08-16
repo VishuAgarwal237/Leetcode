@@ -1,0 +1,22 @@
+
+1. Convert all nums to strings
+2. Write compare function, if a + b > b + a, then return -1, else 1
+3. sort nums by using the cmp_to_key key function and passing in the compare function
+4. return the join of the nums
+
+
+
+
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        
+        nums = [str(x) for x in nums]
+
+        def compare(a, b):
+            if a + b > b + a:
+                return -1
+            else:
+                return 1
+
+        nums = sorted(nums, key = cmp_to_key(compare))
+        return str(int(''.join(nums)))
